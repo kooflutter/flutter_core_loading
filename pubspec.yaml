@@ -1,7 +1,7 @@
 name: flutter_core_loading
-description: A new Flutter loading project.
+description: 一个Flutter loading类，支持展示各种loading及toast
 version: 0.0.3
-homepage:
+homepage: https://github.com/kooflutter/flutter_core_loading
 
 environment:
   sdk: '>=2.19.4 <3.0.0'
