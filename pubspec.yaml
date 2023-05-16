@@ -1,6 +1,6 @@
 name: flutter_core_loading
 description: 一个Flutter loading类，支持展示各种loading及toast
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/kooflutter/flutter_core_loading
 
 environment:
