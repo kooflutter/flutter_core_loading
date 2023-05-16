@@ -22,32 +22,32 @@
 
 import 'package:flutter/material.dart';
 
-import '../easy_loading.dart';
+import '../core_loading.dart';
 import './overlay_entry.dart';
 
-class FlutterEasyLoading extends StatefulWidget {
+class FlutterCoreLoading extends StatefulWidget {
   final Widget? child;
 
-  const FlutterEasyLoading({
+  const FlutterCoreLoading({
     Key? key,
     required this.child,
   })  : assert(child != null),
         super(key: key);
 
   @override
-  _FlutterEasyLoadingState createState() => _FlutterEasyLoadingState();
+  _FlutterCoreLoadingState createState() => _FlutterCoreLoadingState();
 }
 
-class _FlutterEasyLoadingState extends State<FlutterEasyLoading> {
-  late EasyLoadingOverlayEntry _overlayEntry;
+class _FlutterCoreLoadingState extends State<FlutterCoreLoading> {
+  late CoreLoadingOverlayEntry _overlayEntry;
 
   @override
   void initState() {
     super.initState();
-    _overlayEntry = EasyLoadingOverlayEntry(
-      builder: (BuildContext context) => EasyLoading.instance.w ?? Container(),
+    _overlayEntry = CoreLoadingOverlayEntry(
+      builder: (BuildContext context) => CoreLoading.instance.w ?? Container(),
     );
-    EasyLoading.instance.overlayEntry = _overlayEntry;
+    CoreLoading.instance.overlayEntry = _overlayEntry;
   }
 
   @override
@@ -55,7 +55,7 @@ class _FlutterEasyLoadingState extends State<FlutterEasyLoading> {
     return Material(
       child: Overlay(
         initialEntries: [
-          EasyLoadingOverlayEntry(
+          CoreLoadingOverlayEntry(
             builder: (BuildContext context) {
               if (widget.child != null) {
                 return widget.child!;

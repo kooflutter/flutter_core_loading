@@ -12,33 +12,33 @@ class _TestPageState extends State<TestPage> {
   @override
   void initState() {
     super.initState();
-    // EasyLoading.dismiss();
-    EasyLoading.showSuccess('Use in initState');
-    EasyLoading.addStatusCallback(statusCallback);
+    // CoreLoading.dismiss();
+    CoreLoading.showSuccess('Use in initState');
+    CoreLoading.addStatusCallback(statusCallback);
   }
 
   @override
   void deactivate() {
-    EasyLoading.dismiss();
-    EasyLoading.removeCallback(statusCallback);
+    CoreLoading.dismiss();
+    CoreLoading.removeCallback(statusCallback);
     super.deactivate();
   }
 
-  void statusCallback(EasyLoadingStatus status) {
-    print('Test EasyLoading Status $status');
+  void statusCallback(CoreLoadingStatus status) {
+    print('Test CoreLoading Status $status');
   }
 
   void loadData() async {
     try {
-      await EasyLoading.show();
+      await CoreLoading.show();
       HttpClient client = HttpClient();
       HttpClientRequest request =
           await client.getUrl(Uri.parse('https://github.com'));
       HttpClientResponse response = await request.close();
       print(response);
-      await EasyLoading.dismiss();
+      await CoreLoading.dismiss();
     } catch (e) {
-      await EasyLoading.showError(e.toString());
+      await CoreLoading.showError(e.toString());
       print(e);
     }
   }
@@ -53,12 +53,12 @@ class _TestPageState extends State<TestPage> {
         child: TextButton(
           child: Text('loadData'),
           onPressed: () {
-            EasyLoading.show(status: '加载中...');
+            CoreLoading.show(status: '加载中...');
             // loadData();
             // await Future.delayed(Duration(seconds: 2));
-            // EasyLoading.show(status: 'loading...');
+            // CoreLoading.show(status: 'loading...');
             // await Future.delayed(Duration(seconds: 5));
-            // EasyLoading.dismiss();
+            // CoreLoading.dismiss();
           },
         ),
       ),

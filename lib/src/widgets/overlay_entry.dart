@@ -26,10 +26,10 @@ import 'package:flutter/scheduler.dart';
 //https://docs.flutter.dev/development/tools/sdk/release-notes/release-notes-3.0.0
 T? _ambiguate<T>(T? value) => value;
 
-class EasyLoadingOverlayEntry extends OverlayEntry {
+class CoreLoadingOverlayEntry extends OverlayEntry {
   final WidgetBuilder builder;
 
-  EasyLoadingOverlayEntry({
+  CoreLoadingOverlayEntry({
     required this.builder,
   }) : super(builder: builder);
 

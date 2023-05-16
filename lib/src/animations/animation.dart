@@ -22,8 +22,8 @@
 
 import 'package:flutter/widgets.dart';
 
-abstract class EasyLoadingAnimation {
-  EasyLoadingAnimation();
+abstract class CoreLoadingAnimation {
+  CoreLoadingAnimation();
 
   Widget call(
     Widget child,

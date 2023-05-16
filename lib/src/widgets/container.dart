@@ -26,21 +26,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../theme.dart';
-import '../easy_loading.dart';
+import '../core_loading.dart';
 
 //https://docs.flutter.dev/development/tools/sdk/release-notes/release-notes-3.0.0
 T? _ambiguate<T>(T? value) => value;
 
-class EasyLoadingContainer extends StatefulWidget {
+class CoreLoadingContainer extends StatefulWidget {
   final Widget? indicator;
   final String? status;
   final bool? dismissOnTap;
-  final EasyLoadingToastPosition? toastPosition;
-  final EasyLoadingMaskType? maskType;
+  final CoreLoadingToastPosition? toastPosition;
+  final CoreLoadingMaskType? maskType;
   final Completer<void>? completer;
   final bool animation;
 
-  const EasyLoadingContainer({
+  const CoreLoadingContainer({
     Key? key,
     this.indicator,
     this.status,
@@ -52,10 +52,10 @@ class EasyLoadingContainer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  EasyLoadingContainerState createState() => EasyLoadingContainerState();
+  CoreLoadingContainerState createState() => CoreLoadingContainerState();
 }
 
-class EasyLoadingContainerState extends State<EasyLoadingContainer>
+class CoreLoadingContainerState extends State<CoreLoadingContainer>
     with SingleTickerProviderStateMixin {
   String? _status;
   Color? _maskColor;
@@ -74,16 +74,16 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
     if (!mounted) return;
     _status = widget.status;
     _alignment = (widget.indicator == null && widget.status?.isNotEmpty == true)
-        ? EasyLoadingTheme.alignment(widget.toastPosition)
+        ? CoreLoadingTheme.alignment(widget.toastPosition)
         : AlignmentDirectional.center;
     _dismissOnTap =
-        widget.dismissOnTap ?? (EasyLoadingTheme.dismissOnTap ?? false);
+        widget.dismissOnTap ?? (CoreLoadingTheme.dismissOnTap ?? false);
     _ignoring =
-        _dismissOnTap ? false : EasyLoadingTheme.ignoring(widget.maskType);
-    _maskColor = EasyLoadingTheme.maskColor(widget.maskType);
+        _dismissOnTap ? false : CoreLoadingTheme.ignoring(widget.maskType);
+    _maskColor = CoreLoadingTheme.maskColor(widget.maskType);
     _animationController = AnimationController(
       vsync: this,
-      duration: EasyLoadingTheme.animationDuration,
+      duration: CoreLoadingTheme.animationDuration,
     )..addStatusListener((status) {
         bool isCompleted = widget.completer?.isCompleted ?? false;
         if (status == AnimationStatus.completed && !isCompleted) {
@@ -131,7 +131,7 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
   }
 
   void _onTap() async {
-    if (_dismissOnTap) await EasyLoading.dismiss();
+    if (_dismissOnTap) await CoreLoading.dismiss();
   }
 
   @override
@@ -168,7 +168,7 @@ class EasyLoadingContainerState extends State<EasyLoadingContainer>
         AnimatedBuilder(
           animation: _animationController,
           builder: (BuildContext context, Widget? child) {
-            return EasyLoadingTheme.loadingAnimation.buildWidget(
+            return CoreLoadingTheme.loadingAnimation.buildWidget(
               _Indicator(
                 status: _status,
                 indicator: widget.indicator,
@@ -197,13 +197,13 @@ class _Indicator extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(50.0),
       decoration: BoxDecoration(
-        color: EasyLoadingTheme.backgroundColor,
+        color: CoreLoadingTheme.backgroundColor,
         borderRadius: BorderRadius.circular(
-          EasyLoadingTheme.radius,
+          CoreLoadingTheme.radius,
         ),
-        boxShadow: EasyLoadingTheme.boxShadow,
+        boxShadow: CoreLoadingTheme.boxShadow,
       ),
-      padding: EasyLoadingTheme.contentPadding,
+      padding: CoreLoadingTheme.contentPadding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -212,19 +212,19 @@ class _Indicator extends StatelessWidget {
           if (indicator != null)
             Container(
               margin: status?.isNotEmpty == true
-                  ? EasyLoadingTheme.textPadding
+                  ? CoreLoadingTheme.textPadding
                   : EdgeInsets.zero,
               child: indicator,
             ),
           if (status != null)
             Text(
               status!,
-              style: EasyLoadingTheme.textStyle ??
+              style: CoreLoadingTheme.textStyle ??
                   TextStyle(
-                    color: EasyLoadingTheme.textColor,
-                    fontSize: EasyLoadingTheme.fontSize,
+                    color: CoreLoadingTheme.textColor,
+                    fontSize: CoreLoadingTheme.fontSize,
                   ),
-              textAlign: EasyLoadingTheme.textAlign,
+              textAlign: CoreLoadingTheme.textAlign,
             ),
         ],
       ),

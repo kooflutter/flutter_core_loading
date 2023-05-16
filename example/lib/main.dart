@@ -14,10 +14,10 @@ void main() {
 }
 
 void configLoading() {
-  EasyLoading.instance
+  CoreLoading.instance
     ..displayDuration = const Duration(milliseconds: 2000)
-    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
-    ..loadingStyle = EasyLoadingStyle.dark
+    ..indicatorType = CoreLoadingIndicatorType.fadingCircle
+    ..loadingStyle = CoreLoadingStyle.dark
     ..indicatorSize = 45.0
     ..radius = 10.0
     ..progressColor = Colors.yellow
@@ -35,12 +35,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter EasyLoading',
+      title: 'Flutter CoreLoading',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter EasyLoading'),
-      builder: EasyLoading.init(),
+      home: MyHomePage(title: 'Flutter CoreLoading'),
+      builder: CoreLoading.init(),
     );
   }
 }
@@ -61,14 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    EasyLoading.addStatusCallback((status) {
-      print('EasyLoading Status $status');
-      if (status == EasyLoadingStatus.dismiss) {
+    CoreLoading.addStatusCallback((status) {
+      print('CoreLoading Status $status');
+      if (status == CoreLoadingStatus.dismiss) {
         _timer?.cancel();
       }
     });
-    EasyLoading.showSuccess('Use in initState');
-    // EasyLoading.removeCallbacks();
+    CoreLoading.showSuccess('Use in initState');
+    // CoreLoading.removeCallbacks();
   }
 
   @override
@@ -105,27 +105,27 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('dismiss'),
                     onPressed: () async {
                       _timer?.cancel();
-                      await EasyLoading.dismiss();
-                      print('EasyLoading dismiss');
+                      await CoreLoading.dismiss();
+                      print('CoreLoading dismiss');
                     },
                   ),
                   TextButton(
                     child: Text('show'),
                     onPressed: () async {
                       _timer?.cancel();
-                      await EasyLoading.show(
+                      await CoreLoading.show(
                         status: 'loading...',
-                        maskType: EasyLoadingMaskType.black,
+                        maskType: CoreLoadingMaskType.black,
                         dismissOnTap: true
                       );
-                      print('EasyLoading show');
+                      print('CoreLoading show');
                     },
                   ),
                   TextButton(
                     child: Text('showToast'),
                     onPressed: () {
                       _timer?.cancel();
-                      EasyLoading.showToast(
+                      CoreLoading.showToast(
                         'Toast',
                       );
                     },
@@ -134,22 +134,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('showSuccess'),
                     onPressed: () async {
                       _timer?.cancel();
-                      await EasyLoading.showSuccess('Great Success!');
-                      print('EasyLoading showSuccess');
+                      await CoreLoading.showSuccess('Great Success!');
+                      print('CoreLoading showSuccess');
                     },
                   ),
                   TextButton(
                     child: Text('showError'),
                     onPressed: () {
                       _timer?.cancel();
-                      EasyLoading.showError('Failed with Error');
+                      CoreLoading.showError('Failed with Error');
                     },
                   ),
                   TextButton(
                     child: Text('showInfo'),
                     onPressed: () {
                       _timer?.cancel();
-                      EasyLoading.showInfo('Useful Information.');
+                      CoreLoading.showInfo('Useful Information.');
                     },
                   ),
                   TextButton(
@@ -159,13 +159,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       _timer?.cancel();
                       _timer = Timer.periodic(const Duration(milliseconds: 100),
                           (Timer timer) {
-                        EasyLoading.showProgress(_progress,
+                        CoreLoading.showProgress(_progress,
                             status: '${(_progress * 100).toStringAsFixed(0)}%');
                         _progress += 0.03;
 
                         if (_progress >= 1) {
                           _timer?.cancel();
-                          EasyLoading.dismiss();
+                          CoreLoading.dismiss();
                         }
                       });
                     },
@@ -179,24 +179,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text('Style'),
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
-                      child: CupertinoSegmentedControl<EasyLoadingStyle>(
+                      child: CupertinoSegmentedControl<CoreLoadingStyle>(
                         selectedColor: Colors.blue,
                         children: {
-                          EasyLoadingStyle.dark: Padding(
+                          CoreLoadingStyle.dark: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('dark'),
                           ),
-                          EasyLoadingStyle.light: Padding(
+                          CoreLoadingStyle.light: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('light'),
                           ),
-                          EasyLoadingStyle.custom: Padding(
+                          CoreLoadingStyle.custom: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('custom'),
                           ),
                         },
                         onValueChanged: (value) {
-                          EasyLoading.instance.loadingStyle = value;
+                          CoreLoading.instance.loadingStyle = value;
                         },
                       ),
                     ),
@@ -210,28 +210,28 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text('MaskType'),
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
-                      child: CupertinoSegmentedControl<EasyLoadingMaskType>(
+                      child: CupertinoSegmentedControl<CoreLoadingMaskType>(
                         selectedColor: Colors.blue,
                         children: {
-                          EasyLoadingMaskType.none: Padding(
+                          CoreLoadingMaskType.none: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('none'),
                           ),
-                          EasyLoadingMaskType.clear: Padding(
+                          CoreLoadingMaskType.clear: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('clear'),
                           ),
-                          EasyLoadingMaskType.black: Padding(
+                          CoreLoadingMaskType.black: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('black'),
                           ),
-                          EasyLoadingMaskType.custom: Padding(
+                          CoreLoadingMaskType.custom: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('custom'),
                           ),
                         },
                         onValueChanged: (value) {
-                          EasyLoading.instance.maskType = value;
+                          CoreLoading.instance.maskType = value;
                         },
                       ),
                     ),
@@ -246,24 +246,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                       child:
-                          CupertinoSegmentedControl<EasyLoadingToastPosition>(
+                          CupertinoSegmentedControl<CoreLoadingToastPosition>(
                         selectedColor: Colors.blue,
                         children: {
-                          EasyLoadingToastPosition.top: Padding(
+                          CoreLoadingToastPosition.top: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('top'),
                           ),
-                          EasyLoadingToastPosition.center: Padding(
+                          CoreLoadingToastPosition.center: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('center'),
                           ),
-                          EasyLoadingToastPosition.bottom: Padding(
+                          CoreLoadingToastPosition.bottom: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('bottom'),
                           ),
                         },
                         onValueChanged: (value) {
-                          EasyLoading.instance.toastPosition = value;
+                          CoreLoading.instance.toastPosition = value;
                         },
                       ),
                     ),
@@ -278,28 +278,28 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                       child:
-                          CupertinoSegmentedControl<EasyLoadingAnimationStyle>(
+                          CupertinoSegmentedControl<CoreLoadingAnimationStyle>(
                         selectedColor: Colors.blue,
                         children: {
-                          EasyLoadingAnimationStyle.opacity: Padding(
+                          CoreLoadingAnimationStyle.opacity: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('opacity'),
                           ),
-                          EasyLoadingAnimationStyle.offset: Padding(
+                          CoreLoadingAnimationStyle.offset: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('offset'),
                           ),
-                          EasyLoadingAnimationStyle.scale: Padding(
+                          CoreLoadingAnimationStyle.scale: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('scale'),
                           ),
-                          EasyLoadingAnimationStyle.custom: Padding(
+                          CoreLoadingAnimationStyle.custom: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('custom'),
                           ),
                         },
                         onValueChanged: (value) {
-                          EasyLoading.instance.animationStyle = value;
+                          CoreLoading.instance.animationStyle = value;
                         },
                       ),
                     ),
@@ -317,36 +317,36 @@ class _MyHomePageState extends State<MyHomePage> {
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
                       child:
-                          CupertinoSegmentedControl<EasyLoadingIndicatorType>(
+                          CupertinoSegmentedControl<CoreLoadingIndicatorType>(
                         selectedColor: Colors.blue,
                         children: {
-                          EasyLoadingIndicatorType.circle: Padding(
+                          CoreLoadingIndicatorType.circle: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('circle'),
                           ),
-                          EasyLoadingIndicatorType.wave: Padding(
+                          CoreLoadingIndicatorType.wave: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('wave'),
                           ),
-                          EasyLoadingIndicatorType.ring: Padding(
+                          CoreLoadingIndicatorType.ring: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('ring'),
                           ),
-                          EasyLoadingIndicatorType.pulse: Padding(
+                          CoreLoadingIndicatorType.pulse: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('pulse'),
                           ),
-                          EasyLoadingIndicatorType.cubeGrid: Padding(
+                          CoreLoadingIndicatorType.cubeGrid: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('cubeGrid'),
                           ),
-                          EasyLoadingIndicatorType.threeBounce: Padding(
+                          CoreLoadingIndicatorType.threeBounce: Padding(
                             padding: EdgeInsets.all(5.0),
                             child: Text('threeBounce'),
                           ),
                         },
                         onValueChanged: (value) {
-                          EasyLoading.instance.indicatorType = value;
+                          CoreLoading.instance.indicatorType = value;
                         },
                       ),
                     ),

@@ -22,6 +22,6 @@
 
 library flutter_core_loading;
 
-export 'src/easy_loading.dart';
+export 'src/core_loading.dart';
 export 'src/widgets/loading.dart';
 export 'src/animations/animation.dart';

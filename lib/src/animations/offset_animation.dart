@@ -24,7 +24,7 @@ import 'package:flutter/widgets.dart';
 
 import 'animation.dart';
 
-class OffsetAnimation extends EasyLoadingAnimation {
+class OffsetAnimation extends CoreLoadingAnimation {
   OffsetAnimation();
 
   @override

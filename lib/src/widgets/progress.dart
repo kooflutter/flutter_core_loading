@@ -26,19 +26,19 @@ import 'package:flutter/material.dart';
 
 import '../theme.dart';
 
-class EasyLoadingProgress extends StatefulWidget {
+class CoreLoadingProgress extends StatefulWidget {
   final double value;
 
-  const EasyLoadingProgress({
+  const CoreLoadingProgress({
     Key? key,
     required this.value,
   }) : super(key: key);
 
   @override
-  EasyLoadingProgressState createState() => EasyLoadingProgressState();
+  CoreLoadingProgressState createState() => CoreLoadingProgressState();
 }
 
-class EasyLoadingProgressState extends State<EasyLoadingProgress> {
+class CoreLoadingProgressState extends State<CoreLoadingProgress> {
   /// value of progress, should be 0.0~1.0.
   double _value = 0;
 
@@ -61,12 +61,12 @@ class EasyLoadingProgressState extends State<EasyLoadingProgress> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: EasyLoadingTheme.indicatorSize,
-      height: EasyLoadingTheme.indicatorSize,
+      width: CoreLoadingTheme.indicatorSize,
+      height: CoreLoadingTheme.indicatorSize,
       child: _CircleProgress(
         value: _value,
-        color: EasyLoadingTheme.progressColor,
-        width: EasyLoadingTheme.progressWidth,
+        color: CoreLoadingTheme.progressColor,
+        width: CoreLoadingTheme.progressWidth,
       ),
     );
   }

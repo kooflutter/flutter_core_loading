@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_core_loading/flutter_core_loading.dart';
 
-class CustomAnimation extends EasyLoadingAnimation {
+class CustomAnimation extends CoreLoadingAnimation {
   CustomAnimation();
 
   @override

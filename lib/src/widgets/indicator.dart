@@ -23,7 +23,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../easy_loading.dart';
+import '../core_loading.dart';
 import '../theme.dart';
 
 class LoadingIndicator extends StatefulWidget {
@@ -36,10 +36,10 @@ class LoadingIndicator extends StatefulWidget {
 }
 
 class _LoadingIndicatorState extends State<LoadingIndicator> {
-  final double _size = EasyLoadingTheme.indicatorSize;
+  final double _size = CoreLoadingTheme.indicatorSize;
 
   /// indicator color of loading
-  final Color _indicatorColor = EasyLoadingTheme.indicatorColor;
+  final Color _indicatorColor = CoreLoadingTheme.indicatorColor;
   late Widget _indicator;
 
   @override
@@ -55,33 +55,33 @@ class _LoadingIndicatorState extends State<LoadingIndicator> {
   @override
   Widget build(BuildContext context) {
     double _width = _size;
-    switch (EasyLoadingTheme.indicatorType) {
-      case EasyLoadingIndicatorType.fadingCircle:
+    switch (CoreLoadingTheme.indicatorType) {
+      case CoreLoadingIndicatorType.fadingCircle:
         _indicator = SpinKitFadingCircle(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.circle:
+      case CoreLoadingIndicatorType.circle:
         _indicator = SpinKitCircle(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.threeBounce:
+      case CoreLoadingIndicatorType.threeBounce:
         _indicator = SpinKitThreeBounce(
           color: _indicatorColor,
           size: _size,
         );
         _width = _size * 2;
         break;
-      case EasyLoadingIndicatorType.chasingDots:
+      case CoreLoadingIndicatorType.chasingDots:
         _indicator = SpinKitChasingDots(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.wave:
+      case CoreLoadingIndicatorType.wave:
         _indicator = SpinKitWave(
           color: _indicatorColor,
           size: _size,
@@ -89,111 +89,111 @@ class _LoadingIndicatorState extends State<LoadingIndicator> {
         );
         _width = _size * 1.25;
         break;
-      case EasyLoadingIndicatorType.wanderingCubes:
+      case CoreLoadingIndicatorType.wanderingCubes:
         _indicator = SpinKitWanderingCubes(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.rotatingCircle:
+      case CoreLoadingIndicatorType.rotatingCircle:
         _indicator = SpinKitRotatingCircle(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.rotatingPlain:
+      case CoreLoadingIndicatorType.rotatingPlain:
         _indicator = SpinKitRotatingPlain(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.doubleBounce:
+      case CoreLoadingIndicatorType.doubleBounce:
         _indicator = SpinKitDoubleBounce(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.fadingFour:
+      case CoreLoadingIndicatorType.fadingFour:
         _indicator = SpinKitFadingFour(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.fadingCube:
+      case CoreLoadingIndicatorType.fadingCube:
         _indicator = SpinKitFadingCube(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.pulse:
+      case CoreLoadingIndicatorType.pulse:
         _indicator = SpinKitPulse(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.cubeGrid:
+      case CoreLoadingIndicatorType.cubeGrid:
         _indicator = SpinKitCubeGrid(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.foldingCube:
+      case CoreLoadingIndicatorType.foldingCube:
         _indicator = SpinKitFoldingCube(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.pumpingHeart:
+      case CoreLoadingIndicatorType.pumpingHeart:
         _indicator = SpinKitPumpingHeart(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.dualRing:
+      case CoreLoadingIndicatorType.dualRing:
         _indicator = SpinKitDualRing(
           color: _indicatorColor,
           size: _size,
-          lineWidth: EasyLoadingTheme.lineWidth,
+          lineWidth: CoreLoadingTheme.lineWidth,
         );
         break;
-      case EasyLoadingIndicatorType.hourGlass:
+      case CoreLoadingIndicatorType.hourGlass:
         _indicator = SpinKitHourGlass(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.pouringHourGlass:
+      case CoreLoadingIndicatorType.pouringHourGlass:
         _indicator = SpinKitPouringHourGlass(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.fadingGrid:
+      case CoreLoadingIndicatorType.fadingGrid:
         _indicator = SpinKitFadingGrid(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.ring:
+      case CoreLoadingIndicatorType.ring:
         _indicator = SpinKitRing(
           color: _indicatorColor,
           size: _size,
-          lineWidth: EasyLoadingTheme.lineWidth,
+          lineWidth: CoreLoadingTheme.lineWidth,
         );
         break;
-      case EasyLoadingIndicatorType.ripple:
+      case CoreLoadingIndicatorType.ripple:
         _indicator = SpinKitRipple(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.spinningCircle:
+      case CoreLoadingIndicatorType.spinningCircle:
         _indicator = SpinKitSpinningCircle(
           color: _indicatorColor,
           size: _size,
         );
         break;
-      case EasyLoadingIndicatorType.squareCircle:
+      case CoreLoadingIndicatorType.squareCircle:
         _indicator = SpinKitSquareCircle(
           color: _indicatorColor,
           size: _size,

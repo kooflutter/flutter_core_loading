@@ -22,72 +22,72 @@
 
 import 'package:flutter/material.dart';
 
-import './easy_loading.dart';
+import './core_loading.dart';
 import './animations/animation.dart';
 import './animations/opacity_animation.dart';
 import './animations/offset_animation.dart';
 import './animations/scale_animation.dart';
 
-class EasyLoadingTheme {
+class CoreLoadingTheme {
   /// color of indicator
   static Color get indicatorColor =>
-      EasyLoading.instance.loadingStyle == EasyLoadingStyle.custom
-          ? EasyLoading.instance.indicatorColor!
-          : EasyLoading.instance.loadingStyle == EasyLoadingStyle.dark
+      CoreLoading.instance.loadingStyle == CoreLoadingStyle.custom
+          ? CoreLoading.instance.indicatorColor!
+          : CoreLoading.instance.loadingStyle == CoreLoadingStyle.dark
               ? Colors.white
               : Colors.black;
 
   /// progress color of loading
   static Color get progressColor =>
-      EasyLoading.instance.loadingStyle == EasyLoadingStyle.custom
-          ? EasyLoading.instance.progressColor!
-          : EasyLoading.instance.loadingStyle == EasyLoadingStyle.dark
+      CoreLoading.instance.loadingStyle == CoreLoadingStyle.custom
+          ? CoreLoading.instance.progressColor!
+          : CoreLoading.instance.loadingStyle == CoreLoadingStyle.dark
               ? Colors.white
               : Colors.black;
 
   /// background color of loading
   static Color get backgroundColor =>
-      EasyLoading.instance.loadingStyle == EasyLoadingStyle.custom
-          ? EasyLoading.instance.backgroundColor!
-          : EasyLoading.instance.loadingStyle == EasyLoadingStyle.dark
+      CoreLoading.instance.loadingStyle == CoreLoadingStyle.custom
+          ? CoreLoading.instance.backgroundColor!
+          : CoreLoading.instance.loadingStyle == CoreLoadingStyle.dark
               ? Colors.black.withOpacity(0.9)
               : Colors.white;
 
   /// boxShadow color of loading
   static List<BoxShadow>? get boxShadow =>
-      EasyLoading.instance.loadingStyle == EasyLoadingStyle.custom
-          ? EasyLoading.instance.boxShadow ?? [BoxShadow()]
+      CoreLoading.instance.loadingStyle == CoreLoadingStyle.custom
+          ? CoreLoading.instance.boxShadow ?? [BoxShadow()]
           : null;
 
   /// font color of status
   static Color get textColor =>
-      EasyLoading.instance.loadingStyle == EasyLoadingStyle.custom
-          ? EasyLoading.instance.textColor!
-          : EasyLoading.instance.loadingStyle == EasyLoadingStyle.dark
+      CoreLoading.instance.loadingStyle == CoreLoadingStyle.custom
+          ? CoreLoading.instance.textColor!
+          : CoreLoading.instance.loadingStyle == CoreLoadingStyle.dark
               ? Colors.white
               : Colors.black;
 
   /// mask color of loading
-  static Color maskColor(EasyLoadingMaskType? maskType) {
-    maskType ??= EasyLoading.instance.maskType;
-    return maskType == EasyLoadingMaskType.custom
-        ? EasyLoading.instance.maskColor!
-        : maskType == EasyLoadingMaskType.black
+  static Color maskColor(CoreLoadingMaskType? maskType) {
+    maskType ??= CoreLoading.instance.maskType;
+    return maskType == CoreLoadingMaskType.custom
+        ? CoreLoading.instance.maskColor!
+        : maskType == CoreLoadingMaskType.black
             ? Colors.black.withOpacity(0.5)
             : Colors.transparent;
   }
 
   /// loading animation
-  static EasyLoadingAnimation get loadingAnimation {
-    EasyLoadingAnimation _animation;
-    switch (EasyLoading.instance.animationStyle) {
-      case EasyLoadingAnimationStyle.custom:
-        _animation = EasyLoading.instance.customAnimation!;
+  static CoreLoadingAnimation get loadingAnimation {
+    CoreLoadingAnimation _animation;
+    switch (CoreLoading.instance.animationStyle) {
+      case CoreLoadingAnimationStyle.custom:
+        _animation = CoreLoading.instance.customAnimation!;
         break;
-      case EasyLoadingAnimationStyle.offset:
+      case CoreLoadingAnimationStyle.offset:
         _animation = OffsetAnimation();
         break;
-      case EasyLoadingAnimationStyle.scale:
+      case CoreLoadingAnimationStyle.scale:
         _animation = ScaleAnimation();
         break;
       default:
@@ -98,61 +98,61 @@ class EasyLoadingTheme {
   }
 
   /// font size of status
-  static double get fontSize => EasyLoading.instance.fontSize;
+  static double get fontSize => CoreLoading.instance.fontSize;
 
   /// size of indicator
-  static double get indicatorSize => EasyLoading.instance.indicatorSize;
+  static double get indicatorSize => CoreLoading.instance.indicatorSize;
 
   /// width of progress indicator
-  static double get progressWidth => EasyLoading.instance.progressWidth;
+  static double get progressWidth => CoreLoading.instance.progressWidth;
 
   /// width of indicator
-  static double get lineWidth => EasyLoading.instance.lineWidth;
+  static double get lineWidth => CoreLoading.instance.lineWidth;
 
   /// loading indicator type
-  static EasyLoadingIndicatorType get indicatorType =>
-      EasyLoading.instance.indicatorType;
+  static CoreLoadingIndicatorType get indicatorType =>
+      CoreLoading.instance.indicatorType;
 
   /// toast position
-  static EasyLoadingToastPosition get toastPosition =>
-      EasyLoading.instance.toastPosition;
+  static CoreLoadingToastPosition get toastPosition =>
+      CoreLoading.instance.toastPosition;
 
   /// toast position
-  static AlignmentGeometry alignment(EasyLoadingToastPosition? position) =>
-      position == EasyLoadingToastPosition.bottom
+  static AlignmentGeometry alignment(CoreLoadingToastPosition? position) =>
+      position == CoreLoadingToastPosition.bottom
           ? AlignmentDirectional.bottomCenter
-          : (position == EasyLoadingToastPosition.top
+          : (position == CoreLoadingToastPosition.top
               ? AlignmentDirectional.topCenter
               : AlignmentDirectional.center);
 
   /// display duration
-  static Duration get displayDuration => EasyLoading.instance.displayDuration;
+  static Duration get displayDuration => CoreLoading.instance.displayDuration;
 
   /// animation duration
   static Duration get animationDuration =>
-      EasyLoading.instance.animationDuration;
+      CoreLoading.instance.animationDuration;
 
   /// contentPadding of loading
-  static EdgeInsets get contentPadding => EasyLoading.instance.contentPadding;
+  static EdgeInsets get contentPadding => CoreLoading.instance.contentPadding;
 
   /// padding of status
-  static EdgeInsets get textPadding => EasyLoading.instance.textPadding;
+  static EdgeInsets get textPadding => CoreLoading.instance.textPadding;
 
   /// textAlign of status
-  static TextAlign get textAlign => EasyLoading.instance.textAlign;
+  static TextAlign get textAlign => CoreLoading.instance.textAlign;
 
   /// textStyle of status
-  static TextStyle? get textStyle => EasyLoading.instance.textStyle;
+  static TextStyle? get textStyle => CoreLoading.instance.textStyle;
 
   /// radius of loading
-  static double get radius => EasyLoading.instance.radius;
+  static double get radius => CoreLoading.instance.radius;
 
   /// should dismiss on user tap
-  static bool? get dismissOnTap => EasyLoading.instance.dismissOnTap;
+  static bool? get dismissOnTap => CoreLoading.instance.dismissOnTap;
 
-  static bool ignoring(EasyLoadingMaskType? maskType) {
-    maskType ??= EasyLoading.instance.maskType;
-    return EasyLoading.instance.userInteractions ??
-        (maskType == EasyLoadingMaskType.none ? true : false);
+  static bool ignoring(CoreLoadingMaskType? maskType) {
+    maskType ??= CoreLoading.instance.maskType;
+    return CoreLoading.instance.userInteractions ??
+        (maskType == CoreLoadingMaskType.none ? true : false);
   }
 }

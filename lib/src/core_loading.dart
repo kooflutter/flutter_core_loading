@@ -34,21 +34,21 @@ import './animations/animation.dart';
 import './theme.dart';
 
 /// loading style
-enum EasyLoadingStyle {
+enum CoreLoadingStyle {
   light,
   dark,
   custom,
 }
 
 /// toast position
-enum EasyLoadingToastPosition {
+enum CoreLoadingToastPosition {
   top,
   center,
   bottom,
 }
 
 /// loading animation
-enum EasyLoadingAnimationStyle {
+enum CoreLoadingAnimationStyle {
   opacity,
   offset,
   scale,
@@ -60,7 +60,7 @@ enum EasyLoadingAnimationStyle {
 /// [clear] don't allow user interactions while loading is displayed
 /// [black] don't allow user interactions while loading is displayed
 /// [custom] while mask type is custom, maskColor should not be null
-enum EasyLoadingMaskType {
+enum CoreLoadingMaskType {
   none,
   clear,
   black,
@@ -68,7 +68,7 @@ enum EasyLoadingMaskType {
 }
 
 /// loading indicator type. see [https://github.com/jogboms/flutter_spinkit#-showcase]
-enum EasyLoadingIndicatorType {
+enum CoreLoadingIndicatorType {
   fadingCircle,
   circle,
   threeBounce,
@@ -95,28 +95,28 @@ enum EasyLoadingIndicatorType {
 }
 
 /// loading status
-enum EasyLoadingStatus {
+enum CoreLoadingStatus {
   show,
   dismiss,
 }
 
-typedef EasyLoadingStatusCallback = void Function(EasyLoadingStatus status);
+typedef CoreLoadingStatusCallback = void Function(CoreLoadingStatus status);
 
-class EasyLoading {
-  /// loading style, default [EasyLoadingStyle.dark].
-  late EasyLoadingStyle loadingStyle;
+class CoreLoading {
+  /// loading style, default [CoreLoadingStyle.dark].
+  late CoreLoadingStyle loadingStyle;
 
-  /// loading indicator type, default [EasyLoadingIndicatorType.fadingCircle].
-  late EasyLoadingIndicatorType indicatorType;
+  /// loading indicator type, default [CoreLoadingIndicatorType.fadingCircle].
+  late CoreLoadingIndicatorType indicatorType;
 
-  /// loading mask type, default [EasyLoadingMaskType.none].
-  late EasyLoadingMaskType maskType;
+  /// loading mask type, default [CoreLoadingMaskType.none].
+  late CoreLoadingMaskType maskType;
 
-  /// toast position, default [EasyLoadingToastPosition.center].
-  late EasyLoadingToastPosition toastPosition;
+  /// toast position, default [CoreLoadingToastPosition.center].
+  late CoreLoadingToastPosition toastPosition;
 
-  /// loading animationStyle, default [EasyLoadingAnimationStyle.opacity].
-  late EasyLoadingAnimationStyle animationStyle;
+  /// loading animationStyle, default [CoreLoadingAnimationStyle.opacity].
+  late CoreLoadingAnimationStyle animationStyle;
 
   /// textAlign of status, default [TextAlign.center].
   late TextAlign textAlign;
@@ -139,7 +139,7 @@ class EasyLoading {
   /// width of progress indicator, default 2.0.
   late double progressWidth;
 
-  /// width of indicator, default 4.0, only used for [EasyLoadingIndicatorType.ring, EasyLoadingIndicatorType.dualRing].
+  /// width of indicator, default 4.0, only used for [CoreLoadingIndicatorType.ring, CoreLoadingIndicatorType.dualRing].
   late double lineWidth;
 
   /// display duration of [showSuccess] [showError] [showInfo] [showToast], default 2000ms.
@@ -149,27 +149,27 @@ class EasyLoading {
   late Duration animationDuration;
 
   /// loading custom animation, default null.
-  EasyLoadingAnimation? customAnimation;
+  CoreLoadingAnimation? customAnimation;
 
   /// textStyle of status, default null.
   TextStyle? textStyle;
 
-  /// color of loading status, only used for [EasyLoadingStyle.custom].
+  /// color of loading status, only used for [CoreLoadingStyle.custom].
   Color? textColor;
 
-  /// color of loading indicator, only used for [EasyLoadingStyle.custom].
+  /// color of loading indicator, only used for [CoreLoadingStyle.custom].
   Color? indicatorColor;
 
-  /// progress color of loading, only used for [EasyLoadingStyle.custom].
+  /// progress color of loading, only used for [CoreLoadingStyle.custom].
   Color? progressColor;
 
-  /// background color of loading, only used for [EasyLoadingStyle.custom].
+  /// background color of loading, only used for [CoreLoadingStyle.custom].
   Color? backgroundColor;
 
-  /// boxShadow of loading, only used for [EasyLoadingStyle.custom].
+  /// boxShadow of loading, only used for [CoreLoadingStyle.custom].
   List<BoxShadow>? boxShadow;
 
-  /// mask color of loading, only used for [EasyLoadingMaskType.custom].
+  /// mask color of loading, only used for [CoreLoadingMaskType.custom].
   Color? maskColor;
 
   /// should allow user interactions while loading is displayed.
@@ -192,28 +192,28 @@ class EasyLoading {
 
   Widget? _w;
 
-  EasyLoadingOverlayEntry? overlayEntry;
-  GlobalKey<EasyLoadingContainerState>? _key;
-  GlobalKey<EasyLoadingProgressState>? _progressKey;
+  CoreLoadingOverlayEntry? overlayEntry;
+  GlobalKey<CoreLoadingContainerState>? _key;
+  GlobalKey<CoreLoadingProgressState>? _progressKey;
   Timer? _timer;
 
   Widget? get w => _w;
-  GlobalKey<EasyLoadingContainerState>? get key => _key;
-  GlobalKey<EasyLoadingProgressState>? get progressKey => _progressKey;
+  GlobalKey<CoreLoadingContainerState>? get key => _key;
+  GlobalKey<CoreLoadingProgressState>? get progressKey => _progressKey;
 
-  final List<EasyLoadingStatusCallback> _statusCallbacks =
-      <EasyLoadingStatusCallback>[];
+  final List<CoreLoadingStatusCallback> _statusCallbacks =
+      <CoreLoadingStatusCallback>[];
 
-  factory EasyLoading() => _instance;
-  static final EasyLoading _instance = EasyLoading._internal();
+  factory CoreLoading() => _instance;
+  static final CoreLoading _instance = CoreLoading._internal();
 
-  EasyLoading._internal() {
+  CoreLoading._internal() {
     /// set deafult value
-    loadingStyle = EasyLoadingStyle.dark;
-    indicatorType = EasyLoadingIndicatorType.fadingCircle;
-    maskType = EasyLoadingMaskType.none;
-    toastPosition = EasyLoadingToastPosition.center;
-    animationStyle = EasyLoadingAnimationStyle.opacity;
+    loadingStyle = CoreLoadingStyle.dark;
+    indicatorType = CoreLoadingIndicatorType.fadingCircle;
+    maskType = CoreLoadingMaskType.none;
+    toastPosition = CoreLoadingToastPosition.center;
+    animationStyle = CoreLoadingAnimationStyle.opacity;
     textAlign = TextAlign.center;
     indicatorSize = 40.0;
     radius = 5.0;
@@ -229,18 +229,18 @@ class EasyLoading {
     );
   }
 
-  static EasyLoading get instance => _instance;
+  static CoreLoading get instance => _instance;
   static bool get isShow => _instance.w != null;
 
-  /// init EasyLoading
+  /// init CoreLoading
   static TransitionBuilder init({
     TransitionBuilder? builder,
   }) {
     return (BuildContext context, Widget? child) {
       if (builder != null) {
-        return builder(context, FlutterEasyLoading(child: child));
+        return builder(context, FlutterCoreLoading(child: child));
       } else {
-        return FlutterEasyLoading(child: child);
+        return FlutterCoreLoading(child: child);
       }
     };
   }
@@ -249,7 +249,7 @@ class EasyLoading {
   static Future<void> show({
     String? status,
     Widget? indicator,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
     Widget w = indicator ?? (_instance.indicatorWidget ?? LoadingIndicator());
@@ -265,14 +265,14 @@ class EasyLoading {
   static Future<void> showProgress(
     double value, {
     String? status,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingMaskType? maskType,
   }) async {
     assert(
       value >= 0.0 && value <= 1.0,
       'progress value should be 0.0 ~ 1.0',
     );
 
-    if (_instance.loadingStyle == EasyLoadingStyle.custom) {
+    if (_instance.loadingStyle == CoreLoadingStyle.custom) {
       assert(
         _instance.progressColor != null,
         'while loading style is custom, progressColor should not be null',
@@ -281,9 +281,9 @@ class EasyLoading {
 
     if (_instance.w == null || _instance.progressKey == null) {
       if (_instance.key != null) await dismiss(animation: false);
-      GlobalKey<EasyLoadingProgressState> _progressKey =
-          GlobalKey<EasyLoadingProgressState>();
-      Widget w = EasyLoadingProgress(
+      GlobalKey<CoreLoadingProgressState> _progressKey =
+          GlobalKey<CoreLoadingProgressState>();
+      Widget w = CoreLoadingProgress(
         key: _progressKey,
         value: value,
       );
@@ -305,18 +305,18 @@ class EasyLoading {
   static Future<void> showSuccess(
     String status, {
     Duration? duration,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
     Widget w = _instance.successWidget ??
         Icon(
           Icons.done,
-          color: EasyLoadingTheme.indicatorColor,
-          size: EasyLoadingTheme.indicatorSize,
+          color: CoreLoadingTheme.indicatorColor,
+          size: CoreLoadingTheme.indicatorSize,
         );
     return _instance._show(
       status: status,
-      duration: duration ?? EasyLoadingTheme.displayDuration,
+      duration: duration ?? CoreLoadingTheme.displayDuration,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -327,18 +327,18 @@ class EasyLoading {
   static Future<void> showError(
     String status, {
     Duration? duration,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
     Widget w = _instance.errorWidget ??
         Icon(
           Icons.clear,
-          color: EasyLoadingTheme.indicatorColor,
-          size: EasyLoadingTheme.indicatorSize,
+          color: CoreLoadingTheme.indicatorColor,
+          size: CoreLoadingTheme.indicatorSize,
         );
     return _instance._show(
       status: status,
-      duration: duration ?? EasyLoadingTheme.displayDuration,
+      duration: duration ?? CoreLoadingTheme.displayDuration,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -349,18 +349,18 @@ class EasyLoading {
   static Future<void> showInfo(
     String status, {
     Duration? duration,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
     Widget w = _instance.infoWidget ??
         Icon(
           Icons.info_outline,
-          color: EasyLoadingTheme.indicatorColor,
-          size: EasyLoadingTheme.indicatorSize,
+          color: CoreLoadingTheme.indicatorColor,
+          size: CoreLoadingTheme.indicatorSize,
         );
     return _instance._show(
       status: status,
-      duration: duration ?? EasyLoadingTheme.displayDuration,
+      duration: duration ?? CoreLoadingTheme.displayDuration,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
       w: w,
@@ -371,14 +371,14 @@ class EasyLoading {
   static Future<void> showToast(
     String status, {
     Duration? duration,
-    EasyLoadingToastPosition? toastPosition,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingToastPosition? toastPosition,
+    CoreLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
     return _instance._show(
       status: status,
-      duration: duration ?? EasyLoadingTheme.displayDuration,
-      toastPosition: toastPosition ?? EasyLoadingTheme.toastPosition,
+      duration: duration ?? CoreLoadingTheme.displayDuration,
+      toastPosition: toastPosition ?? CoreLoadingTheme.toastPosition,
       maskType: maskType,
       dismissOnTap: dismissOnTap,
     );
@@ -394,14 +394,14 @@ class EasyLoading {
   }
 
   /// add loading status callback
-  static void addStatusCallback(EasyLoadingStatusCallback callback) {
+  static void addStatusCallback(CoreLoadingStatusCallback callback) {
     if (!_instance._statusCallbacks.contains(callback)) {
       _instance._statusCallbacks.add(callback);
     }
   }
 
   /// remove single loading status callback
-  static void removeCallback(EasyLoadingStatusCallback callback) {
+  static void removeCallback(CoreLoadingStatusCallback callback) {
     if (_instance._statusCallbacks.contains(callback)) {
       _instance._statusCallbacks.remove(callback);
     }
@@ -417,16 +417,16 @@ class EasyLoading {
     Widget? w,
     String? status,
     Duration? duration,
-    EasyLoadingMaskType? maskType,
+    CoreLoadingMaskType? maskType,
     bool? dismissOnTap,
-    EasyLoadingToastPosition? toastPosition,
+    CoreLoadingToastPosition? toastPosition,
   }) async {
     assert(
       overlayEntry != null,
-      'You should call EasyLoading.init() in your MaterialApp',
+      'You should call CoreLoading.init() in your MaterialApp',
     );
 
-    if (loadingStyle == EasyLoadingStyle.custom) {
+    if (loadingStyle == CoreLoadingStyle.custom) {
       assert(
         backgroundColor != null,
         'while loading style is custom, backgroundColor should not be null',
@@ -442,28 +442,28 @@ class EasyLoading {
     }
 
     maskType ??= _instance.maskType;
-    if (maskType == EasyLoadingMaskType.custom) {
+    if (maskType == CoreLoadingMaskType.custom) {
       assert(
         maskColor != null,
         'while mask type is custom, maskColor should not be null',
       );
     }
 
-    if (animationStyle == EasyLoadingAnimationStyle.custom) {
+    if (animationStyle == CoreLoadingAnimationStyle.custom) {
       assert(
         customAnimation != null,
         'while animationStyle is custom, customAnimation should not be null',
       );
     }
 
-    toastPosition ??= EasyLoadingToastPosition.center;
+    toastPosition ??= CoreLoadingToastPosition.center;
     bool animation = _w == null;
     _progressKey = null;
     if (_key != null) await dismiss(animation: false);
 
     Completer<void> completer = Completer<void>();
-    _key = GlobalKey<EasyLoadingContainerState>();
-    _w = EasyLoadingContainer(
+    _key = GlobalKey<CoreLoadingContainerState>();
+    _w = CoreLoadingContainer(
       key: _key,
       status: status,
       indicator: w,
@@ -474,7 +474,7 @@ class EasyLoading {
       completer: completer,
     );
     completer.future.whenComplete(() {
-      _callback(EasyLoadingStatus.show);
+      _callback(CoreLoadingStatus.show);
       if (duration != null) {
         _cancelTimer();
         _timer = Timer(duration, () async {
@@ -503,11 +503,11 @@ class EasyLoading {
     _progressKey = null;
     _cancelTimer();
     _markNeedsBuild();
-    _callback(EasyLoadingStatus.dismiss);
+    _callback(CoreLoadingStatus.dismiss);
   }
 
-  void _callback(EasyLoadingStatus status) {
-    for (final EasyLoadingStatusCallback callback in _statusCallbacks) {
+  void _callback(CoreLoadingStatus status) {
+    for (final CoreLoadingStatusCallback callback in _statusCallbacks) {
       callback(status);
     }
   }
