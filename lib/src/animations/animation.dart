@@ -20,8 +20,26 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-library flutter_core_loading;
+import 'package:flutter/widgets.dart';
 
-export 'src/easy_loading.dart';
-export 'src/widgets/loading.dart';
-export 'src/animations/animation.dart';
+abstract class EasyLoadingAnimation {
+  EasyLoadingAnimation();
+
+  Widget call(
+    Widget child,
+    AnimationController controller,
+    AlignmentGeometry alignment,
+  ) {
+    return buildWidget(
+      child,
+      controller,
+      alignment,
+    );
+  }
+
+  Widget buildWidget(
+    Widget child,
+    AnimationController controller,
+    AlignmentGeometry alignment,
+  );
+}

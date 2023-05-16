@@ -20,8 +20,22 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 // IN THE SOFTWARE.
 
-library flutter_core_loading;
+import 'package:flutter/widgets.dart';
 
-export 'src/easy_loading.dart';
-export 'src/widgets/loading.dart';
-export 'src/animations/animation.dart';
+import 'animation.dart';
+
+class OpacityAnimation extends EasyLoadingAnimation {
+  OpacityAnimation();
+
+  @override
+  Widget buildWidget(
+    Widget child,
+    AnimationController controller,
+    AlignmentGeometry alignment,
+  ) {
+    return Opacity(
+      opacity: controller.value,
+      child: child,
+    );
+  }
+}
